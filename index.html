@@ -16,85 +16,161 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- JQuery -->
-    <script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <!-- Container to hold our solar system images -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <img src="assets/images/sun.png" id="sun">
-                <img src="assets/images/mercury.png" id="mercury">
-                <img src="assets/images/venus.png" id="venus">
-                <img src="assets/images/earth.png" id="earth">
-                <img src="assets/images/mars.png" id="mars">
-                <img src="assets/images/jupiter.png" id="jupiter">
-                <img src="assets/images/saturn.png" id="saturn">
-                <img src="assets/images/uranus.png" id="uranus">
-                <img src="assets/images/neptune.png" id="neptune">
-                <img src="assets/images/pluto.png" id="pluto">
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <img src="assets/images/sun.png" class="planet" id="sun">
+            <img src="assets/images/mercury.png" class="planet" id="mercury">
+            <img src="assets/images/venus.png" class="planet" id="venus">
+            <img src="assets/images/earth.png" class="planet" id="earth">
+            <img src="assets/images/mars.png" class="planet" id="mars">
+            <img src="assets/images/jupiter.png" class="planet" id="jupiter">
+            <img src="assets/images/saturn.png" class="planet" id="saturn">
+            <img src="assets/images/uranus.png" class="planet" id="uranus">
+            <img src="assets/images/neptune.png" class="planet" id="neptune">
+            <img src="assets/images/pluto.png" class="planet" id="pluto">
         </div>
     </div>
 
-    <!-- Container to hold each planet data card-->
-    <!-- <div class="container">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Sun</h1>
+                <h1 id="sun-title"></h1>
+                <div id="sun-day-length"></div>
+                <div id="sun-year-length"></div>
+                <div id="sun-distance-from-sun"></div>
+                <div id="sun-mass"></div>
+                <div id="sun-temp"></div>
+                <div id="sun-radius"></div>
+                <div id="sun-moons"></div>
+                <div id="sun-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Mercury</h1>
+                <h1 id="mercury-title"></h1>
+                <div id="mercury-day-length"></div>
+                <div id="mercury-year-length"></div>
+                <div id="mercury-distance-from-sun"></div>
+                <div id="mercury-mass"></div>
+                <div id="mercury-temp"></div>
+                <div id="mercury-radius"></div>
+                <div id="mercury-moons"></div>
+                <div id="mercury-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Venus</h1>
+                <h1 id="venus-title"></h1>
+                <div id="venus-day-length"></div>
+                <div id="venus-year-length"></div>
+                <div id="venus-distance-from-sun"></div>
+                <div id="venus-mass"></div>
+                <div id="venus-temp"></div>
+                <div id="venus-radius"></div>
+                <div id="venus-moons"></div>
+                <div id="venus-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Earth</h1>
+                <h1 id="earth-title"></h1>
+                <div id="earth-day-length"></div>
+                <div id="earth-year-length"></div>
+                <div id="earth-distance-from-sun"></div>
+                <div id="earth-mass"></div>
+                <div id="earth-temp"></div>
+                <div id="earth-radius"></div>
+                <div id="earth-moons"></div>
+                <div id="earth-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Mars</h1>
+                <h1 id="mars-title"></h1>
+                <div id="mars-day-length"></div>
+                <div id="mars-year-length"></div>
+                <div id="mars-distance-from-sun"></div>
+                <div id="mars-mass"></div>
+                <div id="mars-temp"></div>
+                <div id="mars-radius"></div>
+                <div id="mars-moons"></div>
+                <div id="mars-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Jupiter</h1>
+                <h1 id="jupiter-title"></h1>
+                <div id="jupiter-day-length"></div>
+                <div id="jupiter-year-length"></div>
+                <div id="jupiter-distance-from-sun"></div>
+                <div id="jupiter-mass"></div>
+                <div id="jupiter-temp"></div>
+                <div id="jupiter-radius"></div>
+                <div id="jupiter-moons"></div>
+                <div id="jupiter-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Saturn</h1>
+                <h1 id="saturn-title"></h1>
+                <div id="saturn-day-length"></div>
+                <div id="saturn-year-length"></div>
+                <div id="saturn-distance-from-sun"></div>
+                <div id="saturn-mass"></div>
+                <div id="saturn-temp"></div>
+                <div id="saturn-radius"></div>
+                <div id="saturn-moons"></div>
+                <div id="saturn-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Uranus</h1>
+                <h1 id="uranus-title"></h1>
+                <div id="uranus-day-length"></div>
+                <div id="uranus-year-length"></div>
+                <div id="uranus-distance-from-sun"></div>
+                <div id="uranus-mass"></div>
+                <div id="uranus-temp"></div>
+                <div id="uranus-radius"></div>
+                <div id="uranus-moons"></div>
+                <div id="uranus-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Neptune</h1>
+                <h1 id="neptune-title"></h1>
+                <div id="neptune-day-length"></div>
+                <div id="neptune-year-length"></div>
+                <div id="neptune-distance-from-sun"></div>
+                <div id="neptune-mass"></div>
+                <div id="neptune-temp"></div>
+                <div id="neptune-radius"></div>
+                <div id="neptune-moons"></div>
+                <div id="neptune-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1>Pluto</h1>
+                <h1 id="pluto-title"></h1>
+                <div id="pluto-day-length"></div>
+                <div id="pluto-year-length"></div>
+                <div id="pluto-distance-from-sun"></div>
+                <div id="pluto-mass"></div>
+                <div id="pluto-temp"></div>
+                <div id="pluto-radius"></div>
+                <div id="pluto-moons"></div>
+                <div id="pluto-chemicals"></div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Javascript file -->
     <script src="assets/javascript/app.js"></script>
