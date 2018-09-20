@@ -1,17 +1,21 @@
 // MAIN
 // =============================================================================
+$(document).ready(function() {
+
+// Function to split our plain text data strings into individual values
+function getProp(propName, properties) {
+  var splits = properties.split(propName);
+  return splits[1].split("|")[1].split("\n")[0];
+}
 
 // On click event
-$(document).ready(function() {
   $(".planet").on("click", function() {
     // Retrieve unique planet name
     var planetName = $(this).attr("id");
     console.log(planetName);
     // Build our API url
     var queryURL =
-      "https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20" +
-      planetName +
-      "&output=json";
+      "https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20"+ planetName + "&output=json";
 
     // AJAX call to API
     $.ajax({
@@ -48,12 +52,5 @@ $(document).ready(function() {
         }
       }
     });
-
-    // Function to split our plain text data strings into individual values
-    function getProp(propName, properties) {
-      var splits = properties.split(propName);
-      return splits[1].split("|")[1].split("\n")[0];
-    }
-
   })
 });
