@@ -10,13 +10,20 @@ body {
     position: absolute;
     top: 30%;
 }
+header {
+    text-align: center;
+    font-family: 'Monoton', cursive;
+    font-size: 42px;
+    padding-top: 20px;
+    color: lime;
+}
 /* .container {
     position: absolute;
     top: 200px;
     left: 175px;
 } */
 #sun {
-    height: 250px;
+    height: 270px;
     width: 280px;
     /* position: relative; */
     top: 50px;
@@ -34,14 +41,14 @@ body {
     top: 100px;
 }
 #earth {
-    height: 117px;
+    height: 115px;
     width: 120px;
     /* position: relative; */
     top: 90px;
 }
 #mars {
-    height: 90px;
-    width: 90px;
+    height: 85px;
+    width: 85px;
     /* position: relative; */
     top: 105px;
 }
@@ -70,8 +77,11 @@ body {
     top: 95px;
 }
 #pluto {
-    height: 58px;
+    height: 55px;
     width: 60px;
     /* position: relative; */
     top: 120px;
+}
+.grow:hover {
+    transform: scale(1.1);
 }
