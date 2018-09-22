@@ -1,85 +1,119 @@
 body {
-    background: black;
+    background: url('../images/background.jpg');
     color: white;
     margin-left: 0 auto;
-    margin-right: 0 auto;
-    background: url('../images/background.jpg');
+    margin-right: 0 auto; 
 }
+header {
+    text-align: center;
+    font-family: 'Monoton', cursive;
+    font-size: 48px;
+    color: lime;
+    padding-top: 20px;
+}
+p {
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    color: lightskyblue;
+}
+h2 {
+    font-family: 'Monoton', cursive;
+    color: lightskyblue;
+}
+div {
+    margin-bottom: 10px;
+}
+button {
+    margin: 0 auto;
+    display: block;
+    background-color: royalblue;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    padding: 5px 10px 5px 10px;
+}
+input {
+    margin: 0 auto;
+    display: block;
+}
+th {
+    padding-right: 20px;
+}
+img {
+    margin: 0px 3px 0px 3px;
+}
+span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    color: yellow;
+}
+/* table {
+    display: none;
+} */
+/* #input-fields {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+} */
 #planet-row {
     text-align: center;
     position: absolute;
     top: 30%;
 }
-header {
-    text-align: center;
-    font-family: 'Monoton', cursive;
-    font-size: 42px;
-    padding-top: 20px;
-    color: lime;
-}
-/* .container {
+#data-cards {
     position: absolute;
-    top: 200px;
-    left: 175px;
-} */
+    bottom: 0;
+    left: 5%;
+    padding: 20px;
+}
 #sun {
     height: 270px;
     width: 280px;
-    /* position: relative; */
     top: 50px;
 }
 #mercury {
     height: 70px;
     width: 70px;
-    /* position: relative; */
     top: 120px;
 }
 #venus {
     height: 100px;
     width: 100px;
-    /* position: relative; */
     top: 100px;
 }
 #earth {
     height: 115px;
     width: 120px;
-    /* position: relative; */
     top: 90px;
 }
 #mars {
     height: 85px;
     width: 85px;
-    /* position: relative; */
     top: 105px;
 }
 #jupiter {
     height: 170px;
     width: 170px;
-    /* position: relative; */
     top: 65px;
 }
 #saturn {
     height: 145px;
     width: 170px;
-    /* position: relative; */
     top: 80px;
 }
 #uranus {
     height: 120px;
     width: 120px;
-    /* position: relative; */
     top: 95px;
 }
 #neptune {
     height: 115px;
     width: 115px;
-    /* position: relative; */
     top: 95px;
 }
 #pluto {
     height: 55px;
     width: 60px;
-    /* position: relative; */
     top: 120px;
 }
 .grow:hover {
