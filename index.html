@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -22,10 +23,11 @@
     <!-- JQuery -->
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
-
 </head>
 
 <body>
@@ -33,30 +35,144 @@
     <header>Journey Through the Solar System</header>
     <p>Click on a planet to learn more about it!</p>
 
+    <!-- VISITORS FROM EARTH MODAL ====================================================================== -->
     <div class="row">
         <div class="col-md-12" id="input-fields">
             <div><input type="text" placeholder="Name" id="name-input"></div>
             <div><input type="text" placeholder="Age" id="age-input"></div>
-            <div><button id="visitor">Visitors From Earth</button></div>
+        </div>
+    </div>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#tableModal" id="visitor">Visitors
+        From Earth</button>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="tableModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">How Old Are You On Each Planet?</h4>
+                    <button type="button" class="close" data-dismiss="modal">X</button>                
+                </div>
+                <div class="modal-body">
+                    <table id="planet-age-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Earth Age</th>
+                                <th scope="col">Mercury</th>
+                                <th scope="col">Venus</th>
+                                <th scope="col">Mars</th>
+                                <th scope="col">Jupiter</th>
+                                <th scope="col">Saturn</th>
+                                <th scope="col">Uranus</th>
+                                <th scope="col">Neptune</th>
+                                <th scope="col">Pluto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIC OF DAY MODAL ====================================================================== -->
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#picModal" id="picture-of-day">Click
+        for Pic of the Day!</button>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="picModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">NASA Picture of the Day</h4>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body">
+                    <div id="pic-container"></div>
+                    <div id="pic-caption"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLANET MODAL ====================================================================== -->
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="planetModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Planet Data</h4>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body">
+                    <h2 id="planet-title"></h2>
+                    <div id="planet-day-length"></div>
+                    <div id="planet-year-length"></div>
+                    <div id="planet-distance-from-sun"></div>
+                    <div id="planet-mass"></div>
+                    <div id="planet-temp"></div>
+                    <div id="planet-radius"></div>
+                    <div id="planet-moons"></div>
+                    <div id="planet-chemicals"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUN MODAL ====================================================================== -->
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="sunModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sun Data</h4>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body">
+                    <h2 id="sun-title"></h2>
+                    <div id="sun-distance-from-earth"></div>
+                    <div id="sun-temp"></div>
+                    <div id="sun-age"></div>
+                    <div id="sun-lifespan"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12" id="planet-row">
-            <img src="assets/images/sun.png" class="grow" id="sun">
-            <img src="assets/images/mercury.png" class="planet grow" id="mercury">
-            <img src="assets/images/venus.png" class="planet grow" id="venus">
-            <img src="assets/images/earth.png" class="planet grow" id="earth">
-            <img src="assets/images/mars.png" class="planet grow" id="mars">
-            <img src="assets/images/jupiter.png" class="planet grow" id="jupiter">
-            <img src="assets/images/saturn.png" class="planet grow" id="saturn">
-            <img src="assets/images/uranus.png" class="planet grow" id="uranus">
-            <img src="assets/images/neptune.png" class="planet grow" id="neptune">
-            <img src="assets/images/pluto.png" class="planet grow" id="pluto">
+            <img src="assets/images/sun.png" class="grow" id="sun" data-toggle="modal" data-target="#sunModal">
+            <img src="assets/images/mercury.png" class="planet grow" id="mercury" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/venus.png" class="planet grow" id="venus" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/earth.png" class="planet grow" id="earth" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/mars.png" class="planet grow" id="mars" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/jupiter.png" class="planet grow" id="jupiter" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/saturn.png" class="planet grow" id="saturn" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/uranus.png" class="planet grow" id="uranus" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/neptune.png" class="planet grow" id="neptune" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/pluto.png" class="planet grow" id="pluto" data-toggle="modal" data-target="#planetModal">
         </div>
     </div>
 
-    <div class="container" id="data-cards">
+    <!-- <div class="container" id="data-cards">
         <div class="row">
             <div class="col-md-12" id="sun-card">
                 <h2 id="sun-title"></h2>
@@ -114,7 +230,16 @@
                 </table>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="pic-container"></div>
+                <div id="pic-caption"></div>
+            </div>
+            <div class="col-md-12">
+                <div><button id="picture-of-day">Click for Pic of the Day!</button></div>
+            </div>
+        </div>
+    </div> -->
 
     <!-- Javascript file -->
     <script src="assets/javascript/app.js"></script>
