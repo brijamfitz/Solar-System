@@ -17,19 +17,33 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 
     <!-- JQuery -->
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+
 </head>
 
 <body>
 
     <header>Journey Through the Solar System</header>
+    <p>Click on a planet to learn more about it!</p>
+
+    <div class="row">
+        <div class="col-md-12" id="input-fields">
+            <div><input type="text" placeholder="Name" id="name-input"></div>
+            <div><input type="text" placeholder="Age" id="age-input"></div>
+            <div><button id="visitor">Visitors From Earth</button></div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12" id="planet-row">
-            <img src="assets/images/sun.png" class="planet grow" id="sun">
+            <img src="assets/images/sun.png" class="grow" id="sun">
             <img src="assets/images/mercury.png" class="planet grow" id="mercury">
             <img src="assets/images/venus.png" class="planet grow" id="venus">
             <img src="assets/images/earth.png" class="planet grow" id="earth">
@@ -42,129 +56,32 @@
         </div>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-    <div class="container">
+    <div class="container" id="data-cards">
         <div class="row">
-            <div class="col-md-12">
-                <h1 id="sun-title"></h1>
-                <div id="sun-day-length"></div>
-                <div id="sun-year-length"></div>
-                <div id="sun-distance-from-sun"></div>
-                <div id="sun-mass"></div>
+            <div class="col-md-12" id="sun-card">
+                <h2 id="sun-title"></h2>
+                <div id="sun-distance-from-earth"></div>
                 <div id="sun-temp"></div>
-                <div id="sun-radius"></div>
-                <div id="sun-moons"></div>
-                <div id="sun-chemicals"></div>
+                <div id="sun-age"></div>
+                <div id="sun-lifespan"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="planet-card">
+                <h2 id="planet-title"></h2>
+                <div id="planet-day-length"></div>
+                <div id="planet-year-length"></div>
+                <div id="planet-distance-from-sun"></div>
+                <div id="planet-mass"></div>
+                <div id="planet-temp"></div>
+                <div id="planet-radius"></div>
+                <div id="planet-moons"></div>
+                <div id="planet-chemicals"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1 id="mercury-title"></h1>
-                <div id="mercury-day-length"></div>
-                <div id="mercury-year-length"></div>
-                <div id="mercury-distance-from-sun"></div>
-                <div id="mercury-mass"></div>
-                <div id="mercury-temp"></div>
-                <div id="mercury-radius"></div>
-                <div id="mercury-moons"></div>
-                <div id="mercury-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="venus-title"></h1>
-                <div id="venus-day-length"></div>
-                <div id="venus-year-length"></div>
-                <div id="venus-distance-from-sun"></div>
-                <div id="venus-mass"></div>
-                <div id="venus-temp"></div>
-                <div id="venus-radius"></div>
-                <div id="venus-moons"></div>
-                <div id="venus-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="earth-title"></h1>
-                <div id="earth-day-length"></div>
-                <div id="earth-year-length"></div>
-                <div id="earth-distance-from-sun"></div>
-                <div id="earth-mass"></div>
-                <div id="earth-temp"></div>
-                <div id="earth-radius"></div>
-                <div id="earth-moons"></div>
-                <div id="earth-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="mars-title"></h1>
-                <div id="mars-day-length"></div>
-                <div id="mars-year-length"></div>
-                <div id="mars-distance-from-sun"></div>
-                <div id="mars-mass"></div>
-                <div id="mars-temp"></div>
-                <div id="mars-radius"></div>
-                <div id="mars-moons"></div>
-                <div id="mars-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="jupiter-title"></h1>
-                <div id="jupiter-day-length"></div>
-                <div id="jupiter-year-length"></div>
-                <div id="jupiter-distance-from-sun"></div>
-                <div id="jupiter-mass"></div>
-                <div id="jupiter-temp"></div>
-                <div id="jupiter-radius"></div>
-                <div id="jupiter-moons"></div>
-                <div id="jupiter-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="saturn-title"></h1>
-                <div id="saturn-day-length"></div>
-                <div id="saturn-year-length"></div>
-                <div id="saturn-distance-from-sun"></div>
-                <div id="saturn-mass"></div>
-                <div id="saturn-temp"></div>
-                <div id="saturn-radius"></div>
-                <div id="saturn-moons"></div>
-                <div id="saturn-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="uranus-title"></h1>
-                <div id="uranus-day-length"></div>
-                <div id="uranus-year-length"></div>
-                <div id="uranus-distance-from-sun"></div>
-                <div id="uranus-mass"></div>
-                <div id="uranus-temp"></div>
-                <div id="uranus-radius"></div>
-                <div id="uranus-moons"></div>
-                <div id="uranus-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="neptune-title"></h1>
-                <div id="neptune-day-length"></div>
-                <div id="neptune-year-length"></div>
-                <div id="neptune-distance-from-sun"></div>
-                <div id="neptune-mass"></div>
-                <div id="neptune-temp"></div>
-                <div id="neptune-radius"></div>
-                <div id="neptune-moons"></div>
-                <div id="neptune-chemicals"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h1 id="pluto-title"></h1>
+                <h2 id="pluto-title"></h2>
                 <div id="pluto-day-length"></div>
                 <div id="pluto-year-length"></div>
                 <div id="pluto-distance-from-sun"></div>
@@ -173,6 +90,28 @@
                 <div id="pluto-radius"></div>
                 <div id="pluto-moons"></div>
                 <div id="pluto-chemicals"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="planet-age-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Earth Age</th>
+                            <th scope="col">Mercury</th>
+                            <th scope="col">Venus</th>
+                            <th scope="col">Mars</th>
+                            <th scope="col">Jupiter</th>
+                            <th scope="col">Saturn</th>
+                            <th scope="col">Uranus</th>
+                            <th scope="col">Neptune</th>
+                            <th scope="col">Pluto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
