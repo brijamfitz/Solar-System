@@ -2,6 +2,8 @@
 // =============================================================================
 $(document).ready(function() {
 
+  $('#classModal').modal('show')
+
 // Function to split our plain text JSON data strings into individual values
 function getProp(propName, properties) {
   var splits = properties.split(propName);
@@ -120,6 +122,32 @@ function getProp(propName, properties) {
   })
 });
 
+// NASA API call and click event to display picture of the day
+$('#picture-of-day').on('click', function() {
+  // URL
+  var nasaURL = "https://api.nasa.gov/planetary/apod?api_key=EHDG4w54znEf6k6YKpqUXmOhhC8zrmmbYmS4DPRj"
+  // Ajax call to API
+  $.ajax({
+    url: nasaURL,
+    method: 'GET'
+  }).then(function(picResponse) {
+    // Log JSON
+    console.log(picResponse);
+    // Parse to retrieve img url
+    var picOfDay = picResponse.hdurl;
+    console.log(picOfDay);
+    // Parse to retrieve img caption
+    var picCaption = picResponse.explanation;
+    console.log(picCaption);
+    // Display to html
+    var img = $('<img>');
+    img.attr('src', picOfDay);
+    img.attr('id', 'pic-of-day');
+    $('#pic-container').append(img);
+    $('#pic-caption').append(picCaption);
+  })
+})
+
 // FIREBASE
 // =============================================================================
 // Initialize Firebase
@@ -136,9 +164,8 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 // Click event to retrieve and set data to Firebase
-$('button').on('click', function() {
-  // Display table
-  $('table').show();
+$('#visitor').on('click', function() {
+
   // Retrieve user inputs
   var userName = $('#name-input').val().trim();
   var userAge =  $('#age-input').val().trim();
