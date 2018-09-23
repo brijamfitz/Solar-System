@@ -65,7 +65,7 @@
     <div class="row">
         <div class="col-md-12" id="input-fields">
             <div><input type="text" placeholder="Name" id="name-input"></div>
-            <div><input type="text" placeholder="Age" id="age-input"></div>
+            <div><input type="text" placeholder="Age" id="age-input" onkeypress="return isInputNumber(event)"></div>
         </div>
     </div>
     <!-- Trigger the modal with a button -->
@@ -136,6 +136,35 @@
         </div>
     </div>
 
+    <!-- PLUTO MODAL -->
+    <!-- ====================================================================== -->
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="plutoModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Celestial Data</h4>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body" id="pluto-card">
+                    <h2 id="pluto-title"></h2>
+                    <div id="pluto-day-length"></div>
+                    <div id="pluto-year-length"></div>
+                    <div id="pluto-distance-from-sun"></div>
+                    <div id="pluto-mass"></div>
+                    <div id="pluto-temp"></div>
+                    <div id="pluto-radius"></div>
+                    <div id="pluto-moons"></div>
+                    <div id="pluto-chemicals"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="close-button">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- SUN MODAL -->
     <!-- ====================================================================== -->
     <!-- Modal -->
@@ -174,7 +203,7 @@
             <img src="assets/images/saturn.png" class="planet grow" id="saturn" data-toggle="modal" data-target="#planetModal">
             <img src="assets/images/uranus.png" class="planet grow" id="uranus" data-toggle="modal" data-target="#planetModal">
             <img src="assets/images/neptune.png" class="planet grow" id="neptune" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/pluto.png" class="planet grow" id="pluto" data-toggle="modal" data-target="#planetModal">
+            <img src="assets/images/pluto.png" class="pluto grow" id="pluto" data-toggle="modal" data-target="#plutoModal">
         </div>
     </div>
 
