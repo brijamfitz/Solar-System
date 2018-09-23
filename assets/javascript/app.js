@@ -72,11 +72,7 @@ function getProp(propName, properties) {
       $('#planet-radius').html('<span>Radius: </span>' + radius);
       $('#planet-moons').html('<span>Number of moons: </span>' + numMoons);
       $('#planet-chemicals').html();
-
-      $('#close-button').on('click', function() {
-        $('#planet-card').empty();
-      })
-    });
+    })
   })
 
   // Click event for Sun because the JSON is different than the planets
