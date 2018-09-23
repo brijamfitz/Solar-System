@@ -2,7 +2,7 @@
 // =============================================================================
 $(document).ready(function() {
 
-  $('#classModal').modal('show')
+  // $('#classModal').modal('show')
 
 // Function to split our plain text JSON data strings into individual values
 function getProp(propName, properties) {
@@ -72,6 +72,10 @@ function getProp(propName, properties) {
       $('#planet-radius').html('<span>Radius: </span>' + radius);
       $('#planet-moons').html('<span>Number of moons: </span>' + numMoons);
       $('#planet-chemicals').html();
+
+      $('#close-button').on('click', function() {
+        $('#planet-card').empty();
+      })
     });
   })
 
@@ -124,6 +128,8 @@ function getProp(propName, properties) {
 
 // NASA API call and click event to display picture of the day
 $('#picture-of-day').on('click', function() {
+  $('#pic-container').empty();
+  $('#pic-caption').empty();
   // URL
   var nasaURL = "https://api.nasa.gov/planetary/apod?api_key=EHDG4w54znEf6k6YKpqUXmOhhC8zrmmbYmS4DPRj"
   // Ajax call to API
@@ -165,7 +171,6 @@ var database = firebase.database();
 
 // Click event to retrieve and set data to Firebase
 $('#visitor').on('click', function() {
-
   // Retrieve user inputs
   var userName = $('#name-input').val().trim();
   var userAge =  $('#age-input').val().trim();
@@ -179,6 +184,8 @@ $('#visitor').on('click', function() {
   // Testing
   console.log(userName);
   console.log(userAge);
+  // Empty input fields after user submits
+  $('input').val('');
 })
 // Firebase watcher and initial loader
 database.ref().on('child_added', function(snapshot) {
@@ -217,22 +224,14 @@ database.ref().on('child_added', function(snapshot) {
   $('tbody').append(newRow);
 })
 
-// Need to create click event for Sun
-
 // Need to create click event for Pluto
 
 // Need to calculate Days in a Year from 'a' unit to days
+
+// Need to change hours in a day for Mercury and Venus
 
 // Need to convert mass from kg to lbs
 
 // Remove (sidereal) from Hours in Day
 
-// Need to display data to dom
-
-// Need to decide whether to have scroll effect, or pop-up
-
-// Need to create Visitors from Earth user input that will display a table with different ages on each planet
-
-// Need to display comparative data using D3 library
-
-// Need to use one more API call
+// Need to display data using chart.js library
