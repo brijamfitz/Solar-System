@@ -9,8 +9,6 @@ function getProp(propName, properties) {
 
 // On click event for each planet
   $('.planet').on('click', function() {
-      // Empty out sun card if it has already been clicked
-      $('#sun-card').empty();
       // Retrieve unique planet name from id
       var planetName = $(this).attr('id');
       // Make planet name uppercase
@@ -133,7 +131,7 @@ function getProp(propName, properties) {
 
 // Click event for Pluto because JSON is different than other planets
 $('#pluto').on('click', function() {
-  // Retrieve sun name from id
+  // Retrieve Pluto name from id
   var plutoName = $(this).attr('id');
   // Make uppercase
   var plutoUpper = plutoName.charAt(0).toUpperCase() + plutoName.substr(1);
