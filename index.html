@@ -78,7 +78,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">How Old Are You On Each Planet (in Earth Years)?</h4>
-                    <button type="button" class="close" data-dismiss="modal">X</button>       
+                    <button type="button" class="close" data-dismiss="modal">X</button>
                 </div>
                 <div class="modal-body">
                     <table class="table table-striped table-dark" id="planet-age-table">
@@ -127,7 +127,6 @@
                     <div id="planet-temp"></div>
                     <div id="planet-radius"></div>
                     <div id="planet-moons"></div>
-                    <div id="planet-chemicals"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="close-button">Close</button>
@@ -156,7 +155,6 @@
                     <div id="pluto-temp"></div>
                     <div id="pluto-radius"></div>
                     <div id="pluto-moons"></div>
-                    <div id="pluto-chemicals"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="close-button">Close</button>
@@ -194,16 +192,46 @@
     <!-- ====================================================================== -->
     <div class="row">
         <div class="col-md-12" id="planet-row">
-            <img src="assets/images/sun.png" class="grow" id="sun" data-toggle="modal" data-target="#sunModal">
-            <img src="assets/images/mercury.png" class="planet grow" id="mercury" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/venus.png" class="planet grow" id="venus" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/earth.png" class="planet grow" id="earth" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/mars.png" class="planet grow" id="mars" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/jupiter.png" class="planet grow" id="jupiter" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/saturn.png" class="planet grow" id="saturn" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/uranus.png" class="planet grow" id="uranus" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/neptune.png" class="planet grow" id="neptune" data-toggle="modal" data-target="#planetModal">
-            <img src="assets/images/pluto.png" class="pluto grow" id="pluto" data-toggle="modal" data-target="#plutoModal">
+            <figure id="sun-figure">
+                <img src="assets/images/sun.png" class="grow" id="sun" data-toggle="modal" data-target="#sunModal">
+                <figcaption>Sun</figcaption>
+            </figure>
+            <figure id="mercury-figure">
+                <img src="assets/images/mercury.png" class="planet grow" id="mercury" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Mercury</figcaption>
+            </figure>
+            <figure id="venus-figure">
+                <img src="assets/images/venus.png" class="planet grow" id="venus" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Venus</figcaption>
+            </figure>
+            <figure id="earth-figure">
+                <img src="assets/images/earth.png" class="planet grow" id="earth" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Earth</figcaption>
+            </figure>
+            <figure id="mars-figure">
+                <img src="assets/images/mars.png" class="planet grow" id="mars" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Mars</figcaption>
+            </figure>
+            <figure id="jupiter-figure">
+                <img src="assets/images/jupiter.png" class="planet grow" id="jupiter" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Jupiter</figcaption>
+            </figure>
+            <figure id="saturn-figure">
+                <img src="assets/images/saturn.png" class="planet grow" id="saturn" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Saturn</figcaption>
+            </figure>
+            <figure id="uranus-figure">
+                <img src="assets/images/uranus.png" class="planet grow" id="uranus" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Uranus</figcaption>
+            </figure>
+            <figure id="neptune-figure">
+                <img src="assets/images/neptune.png" class="planet grow" id="neptune" data-toggle="modal" data-target="#planetModal">
+                <figcaption>Neptune</figcaption>
+            </figure>
+            <figure id="pluto-figure">
+                <img src="assets/images/pluto.png" class="pluto grow" id="pluto" data-toggle="modal" data-target="#plutoModal">
+                <figcaption>Pluto</figcaption>
+            </figure>
         </div>
     </div>
 
