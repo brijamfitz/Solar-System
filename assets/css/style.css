@@ -52,6 +52,16 @@ button {
 img {
     margin: 0px 3px 0px 3px;
 }
+figure {
+    display: inline-block;
+    position: relative;
+}
+figcaption {
+    color: lime;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    padding: 10px;
+}
 .modal-body {
     overflow-x: auto;
 }
@@ -126,45 +136,72 @@ img {
     width: 70px;
     top: 120px;
 }
+#mercury-figure {
+    bottom: 100px;
+}
 #venus {
     height: 100px;
     width: 100px;
     top: 100px;
+}
+#venus-figure {
+    bottom: 90px;
 }
 #earth {
     height: 115px;
     width: 120px;
     top: 90px;
 }
+#earth-figure {
+    bottom: 85px;
+}
 #mars {
     height: 85px;
     width: 85px;
     top: 105px;
+}
+#mars-figure {
+    bottom: 100px;
 }
 #jupiter {
     height: 170px;
     width: 170px;
     top: 65px;
 }
+#jupiter-figure {
+    bottom: 65px;
+}
 #saturn {
     height: 145px;
     width: 170px;
     top: 80px;
+}
+#saturn-figure {
+    bottom: 75px;
 }
 #uranus {
     height: 120px;
     width: 120px;
     top: 95px;
 }
+#uranus-figure {
+    bottom: 85px;
+}
 #neptune {
     height: 115px;
     width: 115px;
     top: 95px;
 }
+#neptune-figure {
+    bottom: 90px;
+}
 #pluto {
     height: 55px;
     width: 60px;
     top: 120px;
+}
+#pluto-figure {
+    bottom: 120px;
 }
 .grow:hover {
     transform: scale(1.1);
