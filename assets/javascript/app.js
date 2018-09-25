@@ -22,7 +22,7 @@ $(document).ready(function () {
     $.ajax({
       url: queryURL,
       beforeSend: function() {
-        $('.loading-gif').html('<img src="assets/images/loading.gif">');
+        $('.loading-gif').html('<img src="assets/images/loading.gif" id="loading">');
       },
       success: function(response) {
       // Empty loading-gif div
@@ -229,7 +229,7 @@ $(document).ready(function () {
     $.ajax({
       url: sunURL,
       beforeSend: function() {
-        $('.loading-gif').html('<img src="assets/images/loading.gif">');
+        $('.loading-gif').html('<img src="assets/images/loading.gif" id="loading">');
       },
       success: function(sunResponse) {
       // Empty loading-gif div
@@ -316,8 +316,8 @@ $(document).ready(function () {
     // Ajax call to API
     $.ajax({
       url: plutoURL,
-      beforeSuccess: function() {
-        $('.loading-gif').html('<img src="assets/images/loading.gif">');
+      beforeSend: function() {
+        $('.loading-gif').html('<img src="assets/images/loading.gif" id="loading">');
       },
       success: function(plutoResponse) {
       // Empty loading-gif div

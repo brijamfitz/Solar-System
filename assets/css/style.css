@@ -71,6 +71,9 @@ figcaption {
 .loading-gif {
     text-align: center;
 }
+#loading {
+    border-radius: 10px;
+}
 #visitor {
     margin: 0 auto;
     display: block;
