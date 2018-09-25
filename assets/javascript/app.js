@@ -409,84 +409,6 @@ $(document).ready(function () {
   })
 });
 
-// Click event for Pluto because JSON is different than other planets
-// $('#pluto').on('click', function () {
-//   // Retrieve Pluto name from id
-//   var plutoName = $(this).attr('id');
-//   // Make uppercase
-//   var plutoUpper = plutoName.charAt(0).toUpperCase() + plutoName.substr(1);
-//   console.log(plutoUpper);
-//   // Redefine our function within the click event
-//   function getProp(propName, properties) {
-//     var splits = properties.split(propName);
-//     return splits[1].split('|')[1].split('\n')[0];
-//   }
-//   // Build our API url
-//   var plutoURL = 'https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20pluto&output=json';
-//   // Ajax call to API
-//   $.ajax({
-//     url: plutoURL,
-//     method: 'GET'
-//   }).then(function (plutoResponse) {
-//     var plutoJson = JSON.parse(plutoResponse);
-//     console.log(plutoJson)
-//     // Shortern code
-//     var plutoPods = plutoJson.queryresult.pods;
-//     // Parse through JSON and retrieve the data we want
-//     for (let i = 0; i < plutoPods.length; i++) {
-//       if (plutoPods[i].title === 'Orbital properties') {
-//         var distanceFromSun = getProp('largest distance from orbit center', plutoPods[i].subpods[0].plaintext);
-//         console.log('Distance from sun: ' + distanceFromSun);
-//         var daysInYear = getProp('orbital period', plutoPods[i].subpods[0].plaintext);
-//         console.log('Days in a year: ' + daysInYear);
-//       }
-//       else if (plutoPods[i].title === 'Physical properties') {
-//         var hoursInDay = getProp('rotation period', plutoPods[i].subpods[0].plaintext);
-//         console.log('Hours in a day: ' + hoursInDay);
-//         var radius = getProp('average radius', plutoPods[i].subpods[0].plaintext);
-//         console.log('Radius: ' + radius);
-//         var numMoons = getProp('number of moons', plutoPods[i].subpods[0].plaintext);
-//         console.log('Number of moons: ' + numMoons);
-//         var mass = getProp('mass', plutoPods[i].subpods[0].plaintext);
-//         console.log('Mass: ' + mass);
-//       }
-//       else if (plutoPods[i].title === 'Atmosphere') {
-//         var avgTemp = getProp('average temperature', plutoPods[i].subpods[0].plaintext);
-//         console.log('Average temp: ' + avgTemp);
-//         console.log('=====================');
-//         // Need to figure out how to parse and retrieve chemical makeup data
-//         // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
-//         // console.log(chemicalMakeup);
-//       }
-
-//     }
-
-
-//     // Displaying our data to the html
-//     $('#pluto-title').html(plutoUpper);
-//     $('#pluto-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
-//     $('#pluto-year-length').html('<span>Days in a year: </span>' + daysInYear);
-//     $('#pluto-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
-//     $('#pluto-mass').html('<span>Mass: </span>' + mass);
-//     $('#pluto-temp').html('<span>Average temp: </span>' + avgTemp);
-//     $('#pluto-radius').html('<span>Radius: </span>' + radius);
-//     $('#pluto-moons').html('<span>Number of moons: </span>' + numMoons);
-//   })
-//   // Clear out Pluto divs before loading again
-//   if (chart) {
-//     chart.destroy();
-
-//   }
-//   $('#pluto-title').empty();
-//   $('#pluto-day-length').empty();
-//   $('#pluto-year-length').empty();
-//   $('#pluto-distance-from-sun').empty();
-//   $('#pluto-mass').empty();
-//   $('#pluto-temp').empty();
-//   $('#pluto-radius').empty();
-//   $('#pluto-moons').empty();
-// })
-
 // NASA API call and click event to display picture of the day
 $('#picture-of-day').on('click', function () {
   $('#pic-container').empty();
@@ -539,7 +461,6 @@ function isInputNumber(evt) {
     return true;
   }
 }
-
 // Click event to retrieve and set data to Firebase
 $('#visitor').on('click', function () {
   // Retrieve user inputs
@@ -594,16 +515,6 @@ database.ref().on('child_added', function (snapshot) {
   newRow.append('<td>' + plutoAge.toFixed(2) + '</td>');
   $('tbody').append(newRow);
 })
-
-// Need to calculate Days in a Year from 'a' unit to days
-
-// Need to change hours in a day for Mercury and Venus
-
-// Need to convert mass from kg to lbs
-
-// Remove (sidereal) from Hours in Day
-
-// Need to display data using chart.js library
 
 // Need to add responsiveness (media queries)
 
