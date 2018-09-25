@@ -1,73 +1,216 @@
 // MAIN
 // =============================================================================
-$(document).ready(function() {
-// Function to split our plain text JSON data strings into individual values
-function getProp(propName, properties) {
-  var splits = properties.split(propName);
-  return splits[1].split('|')[1].split('\n')[0];
-}
+$(document).ready(function () {
+  // Function to split our plain text JSON data strings into individual values
+  function getProp(propName, properties) {
+    var splits = properties.split(propName);
+    return splits[1].split('|')[1].split('\n')[0];
+  }
+  var chart;
+  // On click event for each planet
+  $('.planet').on('click', function () {
+    // Retrieve unique planet name from id
+    var planetName = $(this).attr('id');
+    // Make planet name uppercase
+    var planetUpper = planetName.charAt(0).toUpperCase() + planetName.substr(1);
+    console.log(planetUpper);
 
-// On click event for each planet
-  $('.planet').on('click', function() {
-      // Retrieve unique planet name from id
-      var planetName = $(this).attr('id');
-      // Make planet name uppercase
-      var planetUpper = planetName.charAt(0).toUpperCase() + planetName.substr(1);
-      console.log(planetUpper);
-
-      // Build our API url
-      var queryURL =
-        'https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20' + planetName + '&output=json';
-      // Ajax call to API
-      $.ajax({
-        url: queryURL,
-        method: 'GET'
-      }).then(function(response) {
-        // This 'jsonifies' our data
-        var json = JSON.parse(response);
-        console.log(json);
-        // Shortens code
-        var pods = json.queryresult.pods;
-        // For loop to iterate through the JSON
-        // Uses our getProp function to retrive the specific data that we want
-        // Console logging those values out
-        for (let i = 0; i < pods.length; i++) {
-          if (pods[i].title === 'Orbital properties') {
-            var distanceFromSun = getProp('largest distance from orbit center', pods[i].subpods[0].plaintext);
-            console.log('Distance from sun: ' + distanceFromSun);
-            var daysInYear = getProp('orbital period', pods[i].subpods[0].plaintext);
-            console.log('Days in a year: ' + daysInYear);
-          } 
-          else if (pods[i].title === 'Physical properties') {
-            var hoursInDay = getProp('rotation period', pods[i].subpods[0].plaintext);
-            console.log('Hours in a day: ' + hoursInDay);
-            var radius = getProp('equatorial radius', pods[i].subpods[0].plaintext);
-            console.log('Radius: ' + radius);
-            var numMoons = getProp('number of moons', pods[i].subpods[0].plaintext);
-            console.log('Number of moons: ' + numMoons);
-            var mass = getProp('mass', pods[i].subpods[0].plaintext);
-            console.log('Mass: ' + mass);
-          }
-          else if (pods[i].title === 'Atmosphere') {
-            var avgTemp = getProp('average temperature', pods[i].subpods[0].plaintext);
-            console.log('Average temp: ' + avgTemp);
-            console.log('=====================');
-            // Need to figure out how to parse and retrieve chemical makeup data
-            // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
-            // console.log(chemicalMakeup);
-          }
+    // Build our API url
+    var queryURL =
+      'https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20' + planetName + '&output=json';
+    // Ajax call to API
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).then(function (response) {
+      // This 'jsonifies' our data
+      var json = JSON.parse(response);
+      console.log(json);
+      // Shortens code
+      var pods = json.queryresult.pods;
+      // For loop to iterate through the JSON
+      // Uses our getProp function to retrive the specific data that we want
+      // Console logging those values out
+      for (let i = 0; i < pods.length; i++) {
+        if (pods[i].title === 'Orbital properties') {
+          var distanceFromSun = getProp('largest distance from orbit center', pods[i].subpods[0].plaintext);
+          console.log('Distance from sun: ' + distanceFromSun);
+          var daysInYear = getProp('orbital period', pods[i].subpods[0].plaintext);
+          console.log('Days in a year: ' + daysInYear);
         }
-        // Displaying our data to the html
-        $('#planet-title').html(planetUpper);
-        $('#planet-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
-        $('#planet-year-length').html('<span>Days in a year: </span>' + daysInYear);
-        $('#planet-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
-        $('#planet-mass').html('<span>Mass: </span>' + mass);
-        $('#planet-temp').html('<span>Average temp: </span>' + avgTemp);
-        $('#planet-radius').html('<span>Radius: </span>' + radius);
-        $('#planet-moons').html('<span>Number of moons: </span>' + numMoons);
-      })
+        else if (pods[i].title === 'Physical properties') {
+          var hoursInDay = getProp('rotation period', pods[i].subpods[0].plaintext);
+          console.log('Hours in a day: ' + hoursInDay);
+          var radius = getProp('equatorial radius', pods[i].subpods[0].plaintext);
+          console.log('Radius: ' + radius);
+          var numMoons = getProp('number of moons', pods[i].subpods[0].plaintext);
+          console.log('Number of moons: ' + numMoons);
+          var mass = getProp('mass', pods[i].subpods[0].plaintext);
+          console.log('Mass: ' + mass);
+        }
+        else if (pods[i].title === 'Atmosphere') {
+          var avgTemp = getProp('average temperature', pods[i].subpods[0].plaintext);
+          console.log('Average temp: ' + avgTemp);
+          console.log('=====================');
+          // Need to figure out how to parse and retrieve chemical makeup data
+          // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
+          // console.log(chemicalMakeup);
+        }
+      }
+      // Displaying our data to the html
+      $('#planet-title').html(planetUpper);
+      $('#planet-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
+      $('#planet-year-length').html('<span>Days in a year: </span>' + daysInYear);
+      $('#planet-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
+      $('#planet-mass').html('<span>Mass: </span>' + mass);
+      $('#planet-temp').html('<span>Average temp: </span>' + avgTemp);
+      $('#planet-radius').html('<span>Radius: </span>' + radius);
+      $('#planet-moons').html('<span>Number of moons: </span>' + numMoons);
+
+      function jupiter() {
+
+        var elements = [];
+        var percentage = [];
+        var chemicalMakeup = pods[6].subpods[1].plaintext.split("\n");
+        console.log(chemicalMakeup);
+        for (let i = 0; i < chemicalMakeup.length; i++) {
+          var constituents = chemicalMakeup[i].split('|');
+          elements.push(constituents[0]);
+          percentage.push(constituents[1].slice(2, 4));
+        }
+        var ctx = document.getElementById('chart').getContext('2d');
+
+        Chart.defaults.scale.ticks.beginAtZero = true;
+
+        chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
+
+          // The data for our dataset
+          data: {
+            labels: elements,
+            datasets: [{
+              label: "Planet Dataset",
+              backgroundColor: ['yellow', 'red', 'blue', 'green', 'purple'],
+              // borderColor: 'rgb(255, 99, 132)',
+              data: percentage,
+            }]
+          },
+
+          // Configuration options go here
+          options: {
+            title: {
+              display: true,
+              text: planetName.toUpperCase() + " Constituents",
+            }
+          }
+        });
+      }
+
+      function somePlanets() {
+
+        var ctx = document.getElementById('chart').getContext('2d');
+        ctx.clearRect(0, 0, document.getElementById('chart').width, document.getElementById('chart').height);
+        var elements = [];
+        var percentage = [];
+        var chemicalMakeup = pods[4].subpods[1].plaintext.split("\n");
+        console.log(chemicalMakeup);
+        for (let i = 0; i < chemicalMakeup.length; i++) {
+          var constituents = chemicalMakeup[i].split('|');
+          elements.push(constituents[0]);
+          percentage.push(constituents[1].replace(/%/gi, " ").slice(1, 3));
+        }
+        // var ctx = document.getElementById('chart').getContext('2d');
+
+        Chart.defaults.scale.ticks.beginAtZero = true;
+
+        chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
+
+          // The data for our dataset
+          data: {
+            labels: elements,
+            datasets: [{
+              label: "Planet Dataset",
+              backgroundColor: ['yellow', 'red', 'blue', 'green', 'purple'],
+              // borderColor: 'rgb(255, 99, 132)',
+              data: percentage,
+            }]
+          },
+
+          // Configuration options go here
+          options: {
+            title: {
+              display: true,
+              text: planetName.toUpperCase() + " Constituents",
+            }
+          }
+        });
+
+        // window.chartToKill = chart;
+      }
+
+      function NepUranus() {
+
+        var elements = [];
+        var percentage = [];
+        var chemicalMakeup = pods[5].subpods[1].plaintext.split("\n");
+        console.log(chemicalMakeup);
+        for (let i = 0; i < chemicalMakeup.length; i++) {
+          var constituents = chemicalMakeup[i].split('|');
+          elements.push(constituents[0]);
+          percentage.push(constituents[1].slice(1, 3));
+        }
+        var ctx = document.getElementById('chart').getContext('2d');
+
+        Chart.defaults.scale.ticks.beginAtZero = true;
+
+        chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
+
+          // The data for our dataset
+          data: {
+            labels: elements,
+            datasets: [{
+              label: "Planet Dataset",
+              backgroundColor: ['yellow', 'red', 'blue', 'green', 'purple'],
+              // borderColor: 'rgb(255, 99, 132)',
+              data: percentage,
+            }]
+          },
+
+          // Configuration options go here
+          options: {
+            title: {
+              display: true,
+              text: planetName.toUpperCase() + " Constituents",
+            }
+          }
+        });
+      }
+
+
+
+      if (planetName === "jupiter") {
+        jupiter();
+
+      } else if (planetName === "mercury" || planetName === "mars" || planetName === "earth" || planetName === "venus" || planetName === "saturn") {
+        somePlanets();
+
+      } else if (planetName === "neptune" || planetName === "uranus") {
+        NepUranus();
+      }
+    })
+
+
     // Clear out the planet divs before loading each new one
+    // chartToKill.destroy()
+    if (chart) {
+      chart.destroy();
+
+    }
     $('#planet-title').empty();
     $('#planet-day-length').empty();
     $('#planet-year-length').empty();
@@ -76,10 +219,12 @@ function getProp(propName, properties) {
     $('#planet-temp').empty();
     $('#planet-radius').empty();
     $('#planet-moons').empty();
+    var ctx = document.getElementById('chart').getContext('2d');
+    ctx.clearRect(0, 0, document.getElementById('chart').width, document.getElementById('chart').height);
   })
 
   // Click event for Sun because the JSON is different than the planets
-  $('#sun').on('click', function() {
+  $('#sun').on('click', function () {
     // Retrieve sun name from id
     var sunName = $(this).attr('id');
     // Make uppercase
@@ -96,23 +241,59 @@ function getProp(propName, properties) {
     $.ajax({
       url: sunURL,
       method: 'GET'
-    }).then(function(sunResponse) {
+    }).then(function (sunResponse) {
       var sunJson = JSON.parse(sunResponse);
       console.log(sunJson)
-    // Shortern code
-    var sunPods = sunJson.queryresult.pods;
-    // Parse through JSON and retrieve the data we want
-    if (sunPods[5].title === 'Star properties') {   
-      var distanceFromEarth = getProp('distance from Earth', sunPods[5].subpods[0].plaintext);
-      console.log('Distance from Earth: ' + distanceFromEarth);
-      var sunTemp = getProp('effective temperature', sunPods[5].subpods[0].plaintext);
-      console.log('Temperature: ' + sunTemp);
-      var sunAge = getProp('age', sunPods[5].subpods[0].plaintext);
-      console.log('Age: ' + sunAge);
-      var sunLifeSpan = getProp('main sequence lifetime', sunPods[5].subpods[0].plaintext);
-      console.log('Lifespan: ' + sunLifeSpan);
-      console.log('=====================');
+      // Shortern code
+      var sunPods = sunJson.queryresult.pods;
+      // Parse through JSON and retrieve the data we want
+      if (sunPods[5].title === 'Star properties') {
+        var distanceFromEarth = getProp('distance from Earth', sunPods[5].subpods[0].plaintext);
+        console.log('Distance from Earth: ' + distanceFromEarth);
+        var sunTemp = getProp('effective temperature', sunPods[5].subpods[0].plaintext);
+        console.log('Temperature: ' + sunTemp);
+        var sunAge = getProp('age', sunPods[5].subpods[0].plaintext);
+        console.log('Age: ' + sunAge);
+        var sunLifeSpan = getProp('main sequence lifetime', sunPods[5].subpods[0].plaintext);
+        console.log('Lifespan: ' + sunLifeSpan);
+        console.log('=====================');
+
+        var elements = [];
+        var percentage = [];
+
+        elements.push("hydrogen (H_2)", "helium (He)", "oxygen (0_2)");
+        percentage.push("70", "28","1.5");
+
+        var ctx = document.getElementById('sunChart').getContext('2d');
+
+        Chart.defaults.scale.ticks.beginAtZero = true;
+
+        chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'pie',
+
+          // The data for our dataset
+          data: {
+            labels: elements,
+            datasets: [{
+              label: "Planet Dataset",
+              backgroundColor: ['yellow', 'red', 'blue', 'green', 'purple'],
+              // borderColor: 'rgb(255, 99, 132)',
+              data: percentage,
+            }]
+          },
+
+          // Configuration options go here
+          options: {
+            title: {
+              display: true,
+              text: sunName.toUpperCase() + " Constituents",
+            }
+          }
+        });
       }
+
+
       // Displaying our data to the html
       $('#sun-title').html(sunUpper);
       $('#sun-distance-from-earth').html('<span>Distance from Earth: </span>' + distanceFromEarth)
@@ -121,87 +302,207 @@ function getProp(propName, properties) {
       $('#sun-lifespan').html('<span>Lifespan: </span>' + sunLifeSpan);
     })
     // Clear out the sun divs before loading again
+    if (chart) {
+      chart.destroy();
+
+    }
     $('#sun-title').empty();
     $('#sun-distance-from-earth').empty();
     $('#sun-temp').empty();
     $('#sun-age').empty();
     $('#sun-lifespan').empty();
   })
+
+  $('#pluto').on('click', function () {
+    // Retrieve Pluto name from id
+    var plutoName = $(this).attr('id');
+    // Make uppercase
+    var plutoUpper = plutoName.charAt(0).toUpperCase() + plutoName.substr(1);
+    console.log(plutoUpper);
+    // Redefine our function within the click event
+    function getProp(propName, properties) {
+      var splits = properties.split(propName);
+      return splits[1].split('|')[1].split('\n')[0];
+    }
+    // Build our API url
+    var plutoURL = 'https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20pluto&output=json';
+    // Ajax call to API
+    $.ajax({
+      url: plutoURL,
+      method: 'GET'
+    }).then(function (plutoResponse) {
+      var plutoJson = JSON.parse(plutoResponse);
+      console.log(plutoJson)
+      // Shortern code
+      var plutoPods = plutoJson.queryresult.pods;
+      // Parse through JSON and retrieve the data we want
+      for (let i = 0; i < plutoPods.length; i++) {
+        if (plutoPods[i].title === 'Orbital properties') {
+          var distanceFromSun = getProp('largest distance from orbit center', plutoPods[i].subpods[0].plaintext);
+          console.log('Distance from sun: ' + distanceFromSun);
+          var daysInYear = getProp('orbital period', plutoPods[i].subpods[0].plaintext);
+          console.log('Days in a year: ' + daysInYear);
+        }
+        else if (plutoPods[i].title === 'Physical properties') {
+          var hoursInDay = getProp('rotation period', plutoPods[i].subpods[0].plaintext);
+          console.log('Hours in a day: ' + hoursInDay);
+          var radius = getProp('average radius', plutoPods[i].subpods[0].plaintext);
+          console.log('Radius: ' + radius);
+          var numMoons = getProp('number of moons', plutoPods[i].subpods[0].plaintext);
+          console.log('Number of moons: ' + numMoons);
+          var mass = getProp('mass', plutoPods[i].subpods[0].plaintext);
+          console.log('Mass: ' + mass);
+        }
+        else if (plutoPods[i].title === 'Atmosphere') {
+          var avgTemp = getProp('average temperature', plutoPods[i].subpods[0].plaintext);
+          console.log('Average temp: ' + avgTemp);
+          console.log('=====================');
+          // Need to figure out how to parse and retrieve chemical makeup data
+          // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
+          // console.log(chemicalMakeup);
+        }
+
+      }
+
+      var elements = [];
+      var percentage = [];
+
+      elements.push("nitrogen (N_2)", "carbon monoxide (CO)");
+      percentage.push("98", "2");
+
+      var ctx = document.getElementById('plutoChart').getContext('2d');
+
+      Chart.defaults.scale.ticks.beginAtZero = true;
+
+      chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'pie',
+
+        // The data for our dataset
+        data: {
+          labels: elements,
+          datasets: [{
+            label: "Planet Dataset",
+            backgroundColor: ['yellow', 'red', 'blue', 'green', 'purple'],
+            // borderColor: 'rgb(255, 99, 132)',
+            data: percentage,
+          }]
+        },
+
+        // Configuration options go here
+        options: {
+          title: {
+            display: true,
+            text: plutoName.toUpperCase() + " Constituents",
+          }
+        }
+      });
+      // Displaying our data to the html
+      $('#pluto-title').html(plutoUpper);
+      $('#pluto-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
+      $('#pluto-year-length').html('<span>Days in a year: </span>' + daysInYear);
+      $('#pluto-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
+      $('#pluto-mass').html('<span>Mass: </span>' + mass);
+      $('#pluto-temp').html('<span>Average temp: </span>' + avgTemp);
+      $('#pluto-radius').html('<span>Radius: </span>' + radius);
+      $('#pluto-moons').html('<span>Number of moons: </span>' + numMoons);
+    })
+    // Clear out Pluto divs before loading again
+    if (chart) {
+      chart.destroy();
+
+    }
+    $('#pluto-title').empty();
+    $('#pluto-day-length').empty();
+    $('#pluto-year-length').empty();
+    $('#pluto-distance-from-sun').empty();
+    $('#pluto-mass').empty();
+    $('#pluto-temp').empty();
+    $('#pluto-radius').empty();
+    $('#pluto-moons').empty();
+  })
 });
 
 // Click event for Pluto because JSON is different than other planets
-$('#pluto').on('click', function() {
-  // Retrieve Pluto name from id
-  var plutoName = $(this).attr('id');
-  // Make uppercase
-  var plutoUpper = plutoName.charAt(0).toUpperCase() + plutoName.substr(1);
-  console.log(plutoUpper);
-  // Redefine our function within the click event
-  function getProp(propName, properties) {
-    var splits = properties.split(propName);
-    return splits[1].split('|')[1].split('\n')[0];
-  }
-  // Build our API url
-  var plutoURL = 'https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20pluto&output=json';
-  // Ajax call to API
-  $.ajax({
-    url: plutoURL,
-    method: 'GET'
-  }).then(function(plutoResponse) {
-    var plutoJson = JSON.parse(plutoResponse);
-    console.log(plutoJson)
-  // Shortern code
-  var plutoPods = plutoJson.queryresult.pods;
-  // Parse through JSON and retrieve the data we want
-  for (let i = 0; i < plutoPods.length; i++) {
-    if (plutoPods[i].title === 'Orbital properties') {
-      var distanceFromSun = getProp('largest distance from orbit center', plutoPods[i].subpods[0].plaintext);
-      console.log('Distance from sun: ' + distanceFromSun);
-      var daysInYear = getProp('orbital period', plutoPods[i].subpods[0].plaintext);
-      console.log('Days in a year: ' + daysInYear);
-    } 
-    else if (plutoPods[i].title === 'Physical properties') {
-      var hoursInDay = getProp('rotation period', plutoPods[i].subpods[0].plaintext);
-      console.log('Hours in a day: ' + hoursInDay);
-      var radius = getProp('average radius', plutoPods[i].subpods[0].plaintext);
-      console.log('Radius: ' + radius);
-      var numMoons = getProp('number of moons', plutoPods[i].subpods[0].plaintext);
-      console.log('Number of moons: ' + numMoons);
-      var mass = getProp('mass', plutoPods[i].subpods[0].plaintext);
-      console.log('Mass: ' + mass);
-    }
-    else if (plutoPods[i].title === 'Atmosphere') {
-      var avgTemp = getProp('average temperature', plutoPods[i].subpods[0].plaintext);
-      console.log('Average temp: ' + avgTemp);
-      console.log('=====================');
-      // Need to figure out how to parse and retrieve chemical makeup data
-      // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
-      // console.log(chemicalMakeup);
-    }
-  }
-    // Displaying our data to the html
-    $('#pluto-title').html(plutoUpper);
-    $('#pluto-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
-    $('#pluto-year-length').html('<span>Days in a year: </span>' + daysInYear);
-    $('#pluto-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
-    $('#pluto-mass').html('<span>Mass: </span>' + mass);
-    $('#pluto-temp').html('<span>Average temp: </span>' + avgTemp);
-    $('#pluto-radius').html('<span>Radius: </span>' + radius);
-    $('#pluto-moons').html('<span>Number of moons: </span>' + numMoons);
-  })
-  // Clear out Pluto divs before loading again
-  $('#pluto-title').empty();
-  $('#pluto-day-length').empty();
-  $('#pluto-year-length').empty();
-  $('#pluto-distance-from-sun').empty();
-  $('#pluto-mass').empty();
-  $('#pluto-temp').empty();
-  $('#pluto-radius').empty();
-  $('#pluto-moons').empty();
-})
+// $('#pluto').on('click', function () {
+//   // Retrieve Pluto name from id
+//   var plutoName = $(this).attr('id');
+//   // Make uppercase
+//   var plutoUpper = plutoName.charAt(0).toUpperCase() + plutoName.substr(1);
+//   console.log(plutoUpper);
+//   // Redefine our function within the click event
+//   function getProp(propName, properties) {
+//     var splits = properties.split(propName);
+//     return splits[1].split('|')[1].split('\n')[0];
+//   }
+//   // Build our API url
+//   var plutoURL = 'https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=4KQL5T-4RUJLAEV7L&input=planet%20pluto&output=json';
+//   // Ajax call to API
+//   $.ajax({
+//     url: plutoURL,
+//     method: 'GET'
+//   }).then(function (plutoResponse) {
+//     var plutoJson = JSON.parse(plutoResponse);
+//     console.log(plutoJson)
+//     // Shortern code
+//     var plutoPods = plutoJson.queryresult.pods;
+//     // Parse through JSON and retrieve the data we want
+//     for (let i = 0; i < plutoPods.length; i++) {
+//       if (plutoPods[i].title === 'Orbital properties') {
+//         var distanceFromSun = getProp('largest distance from orbit center', plutoPods[i].subpods[0].plaintext);
+//         console.log('Distance from sun: ' + distanceFromSun);
+//         var daysInYear = getProp('orbital period', plutoPods[i].subpods[0].plaintext);
+//         console.log('Days in a year: ' + daysInYear);
+//       }
+//       else if (plutoPods[i].title === 'Physical properties') {
+//         var hoursInDay = getProp('rotation period', plutoPods[i].subpods[0].plaintext);
+//         console.log('Hours in a day: ' + hoursInDay);
+//         var radius = getProp('average radius', plutoPods[i].subpods[0].plaintext);
+//         console.log('Radius: ' + radius);
+//         var numMoons = getProp('number of moons', plutoPods[i].subpods[0].plaintext);
+//         console.log('Number of moons: ' + numMoons);
+//         var mass = getProp('mass', plutoPods[i].subpods[0].plaintext);
+//         console.log('Mass: ' + mass);
+//       }
+//       else if (plutoPods[i].title === 'Atmosphere') {
+//         var avgTemp = getProp('average temperature', plutoPods[i].subpods[0].plaintext);
+//         console.log('Average temp: ' + avgTemp);
+//         console.log('=====================');
+//         // Need to figure out how to parse and retrieve chemical makeup data
+//         // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
+//         // console.log(chemicalMakeup);
+//       }
+
+//     }
+
+
+//     // Displaying our data to the html
+//     $('#pluto-title').html(plutoUpper);
+//     $('#pluto-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
+//     $('#pluto-year-length').html('<span>Days in a year: </span>' + daysInYear);
+//     $('#pluto-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
+//     $('#pluto-mass').html('<span>Mass: </span>' + mass);
+//     $('#pluto-temp').html('<span>Average temp: </span>' + avgTemp);
+//     $('#pluto-radius').html('<span>Radius: </span>' + radius);
+//     $('#pluto-moons').html('<span>Number of moons: </span>' + numMoons);
+//   })
+//   // Clear out Pluto divs before loading again
+//   if (chart) {
+//     chart.destroy();
+
+//   }
+//   $('#pluto-title').empty();
+//   $('#pluto-day-length').empty();
+//   $('#pluto-year-length').empty();
+//   $('#pluto-distance-from-sun').empty();
+//   $('#pluto-mass').empty();
+//   $('#pluto-temp').empty();
+//   $('#pluto-radius').empty();
+//   $('#pluto-moons').empty();
+// })
 
 // NASA API call and click event to display picture of the day
-$('#picture-of-day').on('click', function() {
+$('#picture-of-day').on('click', function () {
   $('#pic-container').empty();
   $('#pic-caption').empty();
   // URL
@@ -210,7 +511,7 @@ $('#picture-of-day').on('click', function() {
   $.ajax({
     url: nasaURL,
     method: 'GET'
-  }).then(function(picResponse) {
+  }).then(function (picResponse) {
     // Log JSON
     console.log(picResponse);
     // Parse to retrieve img url
@@ -254,10 +555,10 @@ function isInputNumber(evt) {
 }
 
 // Click event to retrieve and set data to Firebase
-$('#visitor').on('click', function() {
+$('#visitor').on('click', function () {
   // Retrieve user inputs
   var userName = $('#name-input').val().trim();
-  var userAge =  $('#age-input').val().trim();
+  var userAge = $('#age-input').val().trim();
   // Create object to store user input values
   var userData = {
     name: userName,
@@ -272,7 +573,7 @@ $('#visitor').on('click', function() {
   $('input').val('');
 })
 // Firebase watcher and initial loader
-database.ref().on('child_added', function(snapshot) {
+database.ref().on('child_added', function (snapshot) {
   // Console log everything on Firebase
   console.log(snapshot.val());
   console.log(snapshot.val().age);
