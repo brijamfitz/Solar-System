@@ -68,6 +68,9 @@ figcaption {
 .modal-content {
     background-color: lightgrey;
 }
+.loading-gif {
+    text-align: center;
+}
 #visitor {
     margin: 0 auto;
     display: block;
@@ -206,8 +209,3 @@ figcaption {
 .grow:hover {
     transform: scale(1.1);
 }
-
-/* #chart {
-    width: 200px;
-    height: 200px;
-} */

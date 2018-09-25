@@ -21,8 +21,12 @@ $(document).ready(function () {
     // Ajax call to API
     $.ajax({
       url: queryURL,
-      method: 'GET'
-    }).then(function (response) {
+      beforeSend: function() {
+        $('.loading-gif').html('<img src="assets/images/loading.gif">');
+      },
+      success: function(response) {
+      // Empty loading-gif div
+      $('.loading-gif').empty();
       // This 'jsonifies' our data
       var json = JSON.parse(response);
       console.log(json);
@@ -85,7 +89,6 @@ $(document).ready(function () {
         chart = new Chart(ctx, {
           // The type of chart we want to create
           type: 'pie',
-
           // The data for our dataset
           data: {
             labels: elements,
@@ -96,7 +99,6 @@ $(document).ready(function () {
               data: percentage,
             }]
           },
-
           // Configuration options go here
           options: {
             title: {
@@ -106,7 +108,6 @@ $(document).ready(function () {
           }
         });
       }
-
       function somePlanets() {
 
         var ctx = document.getElementById('chart').getContext('2d');
@@ -147,10 +148,8 @@ $(document).ready(function () {
             }
           }
         });
-
         // window.chartToKill = chart;
       }
-
       function NepUranus() {
 
         var elements = [];
@@ -169,7 +168,6 @@ $(document).ready(function () {
         chart = new Chart(ctx, {
           // The type of chart we want to create
           type: 'pie',
-
           // The data for our dataset
           data: {
             labels: elements,
@@ -180,7 +178,6 @@ $(document).ready(function () {
               data: percentage,
             }]
           },
-
           // Configuration options go here
           options: {
             title: {
@@ -190,26 +187,18 @@ $(document).ready(function () {
           }
         });
       }
-
-
-
       if (planetName === "jupiter") {
         jupiter();
-
       } else if (planetName === "mercury" || planetName === "mars" || planetName === "earth" || planetName === "venus" || planetName === "saturn") {
         somePlanets();
-
       } else if (planetName === "neptune" || planetName === "uranus") {
         NepUranus();
       }
-    })
-
-
+    }})
     // Clear out the planet divs before loading each new one
     // chartToKill.destroy()
     if (chart) {
       chart.destroy();
-
     }
     $('#planet-title').empty();
     $('#planet-day-length').empty();
@@ -222,7 +211,6 @@ $(document).ready(function () {
     var ctx = document.getElementById('chart').getContext('2d');
     ctx.clearRect(0, 0, document.getElementById('chart').width, document.getElementById('chart').height);
   })
-
   // Click event for Sun because the JSON is different than the planets
   $('#sun').on('click', function () {
     // Retrieve sun name from id
@@ -240,8 +228,12 @@ $(document).ready(function () {
     // Ajax call to API
     $.ajax({
       url: sunURL,
-      method: 'GET'
-    }).then(function (sunResponse) {
+      beforeSend: function() {
+        $('.loading-gif').html('<img src="assets/images/loading.gif">');
+      },
+      success: function(sunResponse) {
+      // Empty loading-gif div
+      $('.loading-gif').empty();
       var sunJson = JSON.parse(sunResponse);
       console.log(sunJson)
       // Shortern code
@@ -271,7 +263,6 @@ $(document).ready(function () {
         chart = new Chart(ctx, {
           // The type of chart we want to create
           type: 'pie',
-
           // The data for our dataset
           data: {
             labels: elements,
@@ -282,7 +273,6 @@ $(document).ready(function () {
               data: percentage,
             }]
           },
-
           // Configuration options go here
           options: {
             title: {
@@ -292,19 +282,16 @@ $(document).ready(function () {
           }
         });
       }
-
-
       // Displaying our data to the html
       $('#sun-title').html(sunUpper);
       $('#sun-distance-from-earth').html('<span>Distance from Earth: </span>' + distanceFromEarth)
       $('#sun-temp').html('<span>Temperature: </span>' + sunTemp)
       $('#sun-age').html('<span>Age: </span>' + sunAge);
       $('#sun-lifespan').html('<span>Lifespan: </span>' + sunLifeSpan);
-    })
+    }})
     // Clear out the sun divs before loading again
     if (chart) {
       chart.destroy();
-
     }
     $('#sun-title').empty();
     $('#sun-distance-from-earth').empty();
@@ -329,8 +316,12 @@ $(document).ready(function () {
     // Ajax call to API
     $.ajax({
       url: plutoURL,
-      method: 'GET'
-    }).then(function (plutoResponse) {
+      beforeSuccess: function() {
+        $('.loading-gif').html('<img src="assets/images/loading.gif">');
+      },
+      success: function(plutoResponse) {
+      // Empty loading-gif div
+      $('.loading-gif').empty();
       var plutoJson = JSON.parse(plutoResponse);
       console.log(plutoJson)
       // Shortern code
@@ -361,9 +352,7 @@ $(document).ready(function () {
           // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
           // console.log(chemicalMakeup);
         }
-
       }
-
       var elements = [];
       var percentage = [];
 
@@ -377,7 +366,6 @@ $(document).ready(function () {
       chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'pie',
-
         // The data for our dataset
         data: {
           labels: elements,
@@ -388,7 +376,6 @@ $(document).ready(function () {
             data: percentage,
           }]
         },
-
         // Configuration options go here
         options: {
           title: {
@@ -406,11 +393,10 @@ $(document).ready(function () {
       $('#pluto-temp').html('<span>Average temp: </span>' + avgTemp);
       $('#pluto-radius').html('<span>Radius: </span>' + radius);
       $('#pluto-moons').html('<span>Number of moons: </span>' + numMoons);
-    })
+    }})
     // Clear out Pluto divs before loading again
     if (chart) {
       chart.destroy();
-
     }
     $('#pluto-title').empty();
     $('#pluto-day-length').empty();
