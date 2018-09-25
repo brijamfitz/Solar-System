@@ -28,6 +28,9 @@
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+
+    <!-- chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 
 <body>
@@ -115,7 +118,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Celestial Data</h4>
+                    <h4 class="modal-title">Planet Data</h4>
                     <button type="button" class="close" data-dismiss="modal">X</button>
                 </div>
                 <div class="modal-body" id="planet-card">
@@ -128,6 +131,7 @@
                     <div id="planet-radius"></div>
                     <div id="planet-moons"></div>
                 </div>
+                <canvas id="chart"></canvas>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="close-button">Close</button>
                 </div>
@@ -143,7 +147,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Celestial Data</h4>
+                    <h4 class="modal-title">Planet Data</h4>
                     <button type="button" class="close" data-dismiss="modal">X</button>
                 </div>
                 <div class="modal-body" id="pluto-card">
@@ -156,6 +160,7 @@
                     <div id="pluto-radius"></div>
                     <div id="pluto-moons"></div>
                 </div>
+                <canvas id="plutoChart"></canvas>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="close-button">Close</button>
                 </div>
@@ -171,7 +176,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Celestial Data</h4>
+                    <h4 class="modal-title">Sun Data</h4>
                     <button type="button" class="close" data-dismiss="modal">X</button>
                 </div>
                 <div class="modal-body">
@@ -181,6 +186,7 @@
                     <div id="sun-age"></div>
                     <div id="sun-lifespan"></div>
                 </div>
+                <canvas id="sunChart"></canvas>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
                 </div>
