@@ -63,8 +63,8 @@ $(document).ready(function () {
       }
       // Displaying our data to the html
       $('#planet-title').html(planetUpper);
-      $('#planet-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
-      $('#planet-year-length').html('<span>Days in a year: </span>' + daysInYear);
+      $('#planet-day-length').html('<span>Rotation period: </span>' + hoursInDay);
+      $('#planet-year-length').html('<span>Orbital period: </span>' + daysInYear);
       $('#planet-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
       $('#planet-mass').html('<span>Mass: </span>' + mass);
       $('#planet-temp').html('<span>Average temp: </span>' + avgTemp);
@@ -386,8 +386,8 @@ $(document).ready(function () {
       });
       // Displaying our data to the html
       $('#pluto-title').html(plutoUpper);
-      $('#pluto-day-length').html('<span>Hours in a day: </span>' + hoursInDay);
-      $('#pluto-year-length').html('<span>Days in a year: </span>' + daysInYear);
+      $('#pluto-day-length').html('<span>Rotation period: </span>' + hoursInDay);
+      $('#pluto-year-length').html('<span>Orbital period: </span>' + daysInYear);
       $('#pluto-distance-from-sun').html('<span>Distance from sun: </span>' + distanceFromSun);
       $('#pluto-mass').html('<span>Mass: </span>' + mass);
       $('#pluto-temp').html('<span>Average temp: </span>' + avgTemp);
