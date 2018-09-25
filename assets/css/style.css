@@ -206,3 +206,8 @@ figcaption {
 .grow:hover {
     transform: scale(1.1);
 }
+
+/* #chart {
+    width: 200px;
+    height: 200px;
+} */
