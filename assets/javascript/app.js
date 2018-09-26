@@ -13,7 +13,6 @@ $(document).ready(function () {
     var planetName = $(this).attr('id');
     // Make planet name uppercase
     var planetUpper = planetName.charAt(0).toUpperCase() + planetName.substr(1);
-    console.log(planetUpper);
 
     // Build our API url
     var queryURL =
@@ -29,7 +28,6 @@ $(document).ready(function () {
       $('.loading-gif').empty();
       // This 'jsonifies' our data
       var json = JSON.parse(response);
-      console.log(json);
       // Shortens code
       var pods = json.queryresult.pods;
       // For loop to iterate through the JSON
@@ -38,27 +36,16 @@ $(document).ready(function () {
       for (let i = 0; i < pods.length; i++) {
         if (pods[i].title === 'Orbital properties') {
           var distanceFromSun = getProp('largest distance from orbit center', pods[i].subpods[0].plaintext);
-          console.log('Distance from sun: ' + distanceFromSun);
           var daysInYear = getProp('orbital period', pods[i].subpods[0].plaintext);
-          console.log('Days in a year: ' + daysInYear);
         }
         else if (pods[i].title === 'Physical properties') {
           var hoursInDay = getProp('rotation period', pods[i].subpods[0].plaintext);
-          console.log('Hours in a day: ' + hoursInDay);
           var radius = getProp('equatorial radius', pods[i].subpods[0].plaintext);
-          console.log('Radius: ' + radius);
           var numMoons = getProp('number of moons', pods[i].subpods[0].plaintext);
-          console.log('Number of moons: ' + numMoons);
           var mass = getProp('mass', pods[i].subpods[0].plaintext);
-          console.log('Mass: ' + mass);
         }
         else if (pods[i].title === 'Atmosphere') {
           var avgTemp = getProp('average temperature', pods[i].subpods[0].plaintext);
-          console.log('Average temp: ' + avgTemp);
-          console.log('=====================');
-          // Need to figure out how to parse and retrieve chemical makeup data
-          // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
-          // console.log(chemicalMakeup);
         }
       }
       // Displaying our data to the html
@@ -76,7 +63,6 @@ $(document).ready(function () {
         var elements = [];
         var percentage = [];
         var chemicalMakeup = pods[6].subpods[1].plaintext.split("\n");
-        console.log(chemicalMakeup);
         for (let i = 0; i < chemicalMakeup.length; i++) {
           var constituents = chemicalMakeup[i].split('|');
           elements.push(constituents[0]);
@@ -104,7 +90,8 @@ $(document).ready(function () {
             title: {
               display: true,
               text: planetName.toUpperCase() + " Constituents",
-            }
+            },
+            responsive: false,
           }
         });
       }
@@ -115,7 +102,6 @@ $(document).ready(function () {
         var elements = [];
         var percentage = [];
         var chemicalMakeup = pods[4].subpods[1].plaintext.split("\n");
-        console.log(chemicalMakeup);
         for (let i = 0; i < chemicalMakeup.length; i++) {
           var constituents = chemicalMakeup[i].split('|');
           elements.push(constituents[0]);
@@ -145,7 +131,8 @@ $(document).ready(function () {
             title: {
               display: true,
               text: planetName.toUpperCase() + " Constituents",
-            }
+            },
+            responsive: false,
           }
         });
         // window.chartToKill = chart;
@@ -155,7 +142,6 @@ $(document).ready(function () {
         var elements = [];
         var percentage = [];
         var chemicalMakeup = pods[5].subpods[1].plaintext.split("\n");
-        console.log(chemicalMakeup);
         for (let i = 0; i < chemicalMakeup.length; i++) {
           var constituents = chemicalMakeup[i].split('|');
           elements.push(constituents[0]);
@@ -183,7 +169,8 @@ $(document).ready(function () {
             title: {
               display: true,
               text: planetName.toUpperCase() + " Constituents",
-            }
+            },
+            responsive: false,
           }
         });
       }
@@ -217,7 +204,6 @@ $(document).ready(function () {
     var sunName = $(this).attr('id');
     // Make uppercase
     var sunUpper = sunName.charAt(0).toUpperCase() + sunName.substr(1);
-    console.log(sunUpper);
     // Redefine our function within the click event
     function getProp(propName, properties) {
       var splits = properties.split(propName);
@@ -235,20 +221,14 @@ $(document).ready(function () {
       // Empty loading-gif div
       $('.loading-gif').empty();
       var sunJson = JSON.parse(sunResponse);
-      console.log(sunJson)
       // Shortern code
       var sunPods = sunJson.queryresult.pods;
       // Parse through JSON and retrieve the data we want
       if (sunPods[5].title === 'Star properties') {
         var distanceFromEarth = getProp('distance from Earth', sunPods[5].subpods[0].plaintext);
-        console.log('Distance from Earth: ' + distanceFromEarth);
         var sunTemp = getProp('effective temperature', sunPods[5].subpods[0].plaintext);
-        console.log('Temperature: ' + sunTemp);
         var sunAge = getProp('age', sunPods[5].subpods[0].plaintext);
-        console.log('Age: ' + sunAge);
         var sunLifeSpan = getProp('main sequence lifetime', sunPods[5].subpods[0].plaintext);
-        console.log('Lifespan: ' + sunLifeSpan);
-        console.log('=====================');
 
         var elements = [];
         var percentage = [];
@@ -278,7 +258,8 @@ $(document).ready(function () {
             title: {
               display: true,
               text: sunName.toUpperCase() + " Constituents",
-            }
+            },
+            responsive: false,
           }
         });
       }
@@ -305,7 +286,6 @@ $(document).ready(function () {
     var plutoName = $(this).attr('id');
     // Make uppercase
     var plutoUpper = plutoName.charAt(0).toUpperCase() + plutoName.substr(1);
-    console.log(plutoUpper);
     // Redefine our function within the click event
     function getProp(propName, properties) {
       var splits = properties.split(propName);
@@ -323,34 +303,22 @@ $(document).ready(function () {
       // Empty loading-gif div
       $('.loading-gif').empty();
       var plutoJson = JSON.parse(plutoResponse);
-      console.log(plutoJson)
       // Shortern code
       var plutoPods = plutoJson.queryresult.pods;
       // Parse through JSON and retrieve the data we want
       for (let i = 0; i < plutoPods.length; i++) {
         if (plutoPods[i].title === 'Orbital properties') {
           var distanceFromSun = getProp('largest distance from orbit center', plutoPods[i].subpods[0].plaintext);
-          console.log('Distance from sun: ' + distanceFromSun);
           var daysInYear = getProp('orbital period', plutoPods[i].subpods[0].plaintext);
-          console.log('Days in a year: ' + daysInYear);
         }
         else if (plutoPods[i].title === 'Physical properties') {
           var hoursInDay = getProp('rotation period', plutoPods[i].subpods[0].plaintext);
-          console.log('Hours in a day: ' + hoursInDay);
           var radius = getProp('average radius', plutoPods[i].subpods[0].plaintext);
-          console.log('Radius: ' + radius);
           var numMoons = getProp('number of moons', plutoPods[i].subpods[0].plaintext);
-          console.log('Number of moons: ' + numMoons);
           var mass = getProp('mass', plutoPods[i].subpods[0].plaintext);
-          console.log('Mass: ' + mass);
         }
         else if (plutoPods[i].title === 'Atmosphere') {
           var avgTemp = getProp('average temperature', plutoPods[i].subpods[0].plaintext);
-          console.log('Average temp: ' + avgTemp);
-          console.log('=====================');
-          // Need to figure out how to parse and retrieve chemical makeup data
-          // var chemicalMakeup = getProp('Major constituents', pods[i].subpods[1].plaintext)
-          // console.log(chemicalMakeup);
         }
       }
       var elements = [];
@@ -381,7 +349,8 @@ $(document).ready(function () {
           title: {
             display: true,
             text: plutoName.toUpperCase() + " Constituents",
-          }
+          },
+          responsive: false,
         }
       });
       // Displaying our data to the html
@@ -420,14 +389,10 @@ $('#picture-of-day').on('click', function () {
     url: nasaURL,
     method: 'GET'
   }).then(function (picResponse) {
-    // Log JSON
-    console.log(picResponse);
     // Parse to retrieve img url
     var picOfDay = picResponse.hdurl;
-    console.log(picOfDay);
     // Parse to retrieve img caption
     var picCaption = picResponse.explanation;
-    console.log(picCaption);
     // Display to html
     var img = $('<img>');
     img.attr('src', picOfDay);
@@ -473,17 +438,11 @@ $('#visitor').on('click', function () {
   }
   // Push to Firebase database
   database.ref().push(userData);
-  // Testing
-  console.log(userName);
-  console.log(userAge);
   // Empty input fields after user submits
   $('input').val('');
 })
 // Firebase watcher and initial loader
 database.ref().on('child_added', function (snapshot) {
-  // Console log everything on Firebase
-  console.log(snapshot.val());
-  console.log(snapshot.val().age);
   // Update the HTML with our stored data
   var newRow = $('<tr>');
   newRow.append('<td>' + snapshot.val().name + '</td>');
