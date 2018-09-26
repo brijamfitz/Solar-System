@@ -212,11 +212,5 @@ figcaption {
 .grow:hover {
     transform: scale(1.1);
 }
-#chart,
-#sunChart,
-#plutoChart {
-    margin: 0 auto;
-    padding-bottom: 20px;
-}
 
 /* Need to add responsiveness (media queries)

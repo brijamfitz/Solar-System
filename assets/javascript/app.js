@@ -90,8 +90,7 @@ $(document).ready(function () {
             title: {
               display: true,
               text: planetName.toUpperCase() + " Constituents",
-            },
-            responsive: false,
+            }
           }
         });
       }
@@ -131,8 +130,7 @@ $(document).ready(function () {
             title: {
               display: true,
               text: planetName.toUpperCase() + " Constituents",
-            },
-            responsive: false,
+            }
           }
         });
         // window.chartToKill = chart;
@@ -169,8 +167,7 @@ $(document).ready(function () {
             title: {
               display: true,
               text: planetName.toUpperCase() + " Constituents",
-            },
-            responsive: false,
+            }
           }
         });
       }
@@ -258,8 +255,7 @@ $(document).ready(function () {
             title: {
               display: true,
               text: sunName.toUpperCase() + " Constituents",
-            },
-            responsive: false,
+            }
           }
         });
       }
@@ -349,8 +345,7 @@ $(document).ready(function () {
           title: {
             display: true,
             text: plutoName.toUpperCase() + " Constituents",
-          },
-          responsive: false,
+          }
         }
       });
       // Displaying our data to the html
@@ -474,7 +469,3 @@ database.ref().on('child_added', function (snapshot) {
   newRow.append('<td>' + plutoAge.toFixed(2) + '</td>');
   $('tbody').append(newRow);
 })
-
-// Need to add responsiveness (media queries)
-
-// Clear console logs
