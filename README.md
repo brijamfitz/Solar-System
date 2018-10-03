@@ -9,7 +9,7 @@ Project 1 Requirements Checklist:
     * NASA
     
 * Must use AJAX to pull data
-    * *We use this to call each API
+    * We use this to call each API
 
 * Must utilize at least one new library or technology that we haven't discussed
     * Chart.js
