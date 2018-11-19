@@ -2,35 +2,29 @@
 
 Experience a fun, interactive, and educational journey through the solar system!
 
-Project 1 Requirements Checklist:
+Experience here: [Journey Through the Solar System](https://brijamfitz.github.io/Solar-System/)
 
-* Must uses at least two APIs
-    * Wolfram Alpha
-    * NASA
-    
-* Must use AJAX to pull data
-    * We use this to call each API
+**Application Walkthrough**
+* User can interactive with the sun and all nine planets (yes, Pluto is included!) in our solar system!
+* Clicking on one of the celestial bodies will display a modal with relavant information about each planet
+* There is a button that will display NASA's picture of the day, along with detailed caption
+* A user can also enter their name and age to find out how old they would be (in Earth years) on every planet!
 
-* Must utilize at least one new library or technology that we haven't discussed
-    * Chart.js
+**Additional tech used:**
+* Wolfram Alpha API
+* NASA API
+* Chart.js
+* Firebase
 
-* Must have a polished frontend / UI
-    * Clean and polished!
+&nbsp;
 
-* Must meet good quality coding standards (indentation, scoping, naming)
-    * Code has been formatted properly
+Designed and built by the following developer team:
+* Chandra Raharja
+* Ryan Jae
+* Brian Fitzgerald
 
-* Must NOT use alerts, confirms, or prompts (look into modals!)
-    * We use modals
+Maintained by Brian Fitzgerald
 
-* Must have some sort of repeating element (table, columns, etc)
-    * Table that stores user name and age
+Email: brianjfitzgerald@gmail.com
 
-* Must use Bootstrap or Alternative CSS Framework
-    * Bootstrap
-
-* Must be Deployed (GitHub Pages or Firebase)
-    * GitHub Pages
-
-* Must have User Input Validation
-    * Takes in user name and age, stores in Firebase, and calculates age on each planet
+&#169; 2018
